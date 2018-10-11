@@ -14,8 +14,8 @@ namespace AutomationFramework
 
         [OneTimeTearDown]
         public void RunAfterAllTests()
-        {            
-            ReportHandler.Instance.Flush();
+        {
+
         }
     }
 }
