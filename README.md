@@ -84,6 +84,31 @@ Mas información en: https://github.com/nunit/docs/wiki/Attributes
         }
 ```
 ## Applitools
+```c#
+            Eyes eyes = new Eyes();
+            eyes.ApiKey = "1254dddccc_lñ222";
+
+            IWebDriver driver = new ChromeDriver();
+            eyes.Open(Driver, "AutomationFramework", TestContext.CurrentContext.Test.Name);
+            Driver.Url = "https://www.google.com/";
+
+            eyes.CheckWindow("Google Page");
+            eyes.Close();
+```
+```c#
+        private void LogApplitools()
+        {
+            var throwtTestCompleteException = false;
+            Applitools.TestResults result = eyes.Close(throwtTestCompleteException);
+            string url = result.Url;
+            if (result.IsNew)
+                Test.Log(Status.Info, "New Baseline Created: URL=" + url);
+            else if (result.IsPassed)
+                Test.Log(Status.Info, "Visual check Passed: URL=" + url);
+            else
+                Test.Log(Status.Info, "Visual check Failed: URL=" + url);
+        }
+```
 ## Parallel Test Execution
 ```c#
 [assembly: Parallelizable(ParallelScope.Fixtures)]
