@@ -62,4 +62,7 @@ Mas información en: https://github.com/nunit/docs/wiki/Attributes
 ```
 ## Applitools
 ## Parallel Test Execution
+```c#
+[assembly: Parallelizable(ParallelScope.Fixtures)]
+```
 
