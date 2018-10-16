@@ -28,6 +28,18 @@ Mas información en: https://github.com/nunit/docs/wiki/Attributes
 ## Selenium WebDriver
 ## ExtentReports
 ```c#
+            var htmlReporter = new ExtentHtmlReporter(TestContext.CurrentContext.TestDirectory + "\\Report.html");
+            htmlReporter.LoadConfig(TestContext.CurrentContext.TestDirectory + "\\extent-config.xml");
+            Instance.AttachReporter(htmlReporter);
+
+            ExtentTest Test = ReportHandler.Instance.CreateTest(TestContext.CurrentContext.Test.Name);
+
+            Test.Log(Status.Info, "SuccessfulLogin");
+            Test.AddScreenCaptureFromPath(ScreenShotHandler.TakeScreenShot(Driver));
+
+            ReportHandler.Instance.Flush();
+```
+```c#
         [TearDown]
         public void AfterBaseTest()
         {
