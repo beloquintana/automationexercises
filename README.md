@@ -13,6 +13,15 @@
 | OneTimeTearDown | Indica a un método que se va a ejecutar una sola vez después de todos los test  |
 | TestCase        | Permite parametrizar casos de prueba  |
 
+**Ejemplo TestCase:**
+```c#
+        [TestCase("10", "8")]
+        public void SumTest(float number1, float number2)
+        {
+            float sum = number1 + number2;
+            //...
+        }
+```
 
 Mas información en: https://github.com/nunit/docs/wiki/Attributes
 
