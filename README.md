@@ -1,7 +1,6 @@
 ## Automation Exercises
 ## Automation Framework
 ## C#
-## ExtentReports
 ## NUnit
 | Anotación       | Descripción   |
 | -------------   | ------------- |
@@ -16,6 +15,51 @@
 Mas información en: https://github.com/nunit/docs/wiki/Attributes
 
 ## Selenium WebDriver
+## ExtentReports
+```c#
+        [TearDown]
+        public void AfterBaseTest()
+        {
+            try
+            {
+                var status = TestContext.CurrentContext.Result.Outcome.Status;
+                var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
+                        ? ""
+                        : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
+                Status logstatus;
+
+                switch (status)
+                {
+                    case TestStatus.Failed:
+                        logstatus = Status.Fail;
+                        Test.AddScreenCaptureFromPath(ScreenShotHandler.TakeScreenShot(Driver));
+                        break;
+                    case TestStatus.Inconclusive:
+                        logstatus = Status.Warning;
+                        break;
+                    case TestStatus.Skipped:
+                        logstatus = Status.Skip;
+                        break;
+                    default:
+                        logstatus = Status.Pass;
+                        break;
+                }
+
+                Test.Log(logstatus, "Test ended with " + logstatus + stacktrace);                
+            }
+            catch (Exception e)
+            {
+                Test.Log(Status.Error, "Exception " + e.Message);
+            }
+            finally
+            {                
+                if (Driver != null)
+                {
+                    Driver.Quit();
+                }
+            }            
+        }
+```
 ## Applitools
 ## Parallel Test Execution
 
