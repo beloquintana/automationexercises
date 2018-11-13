@@ -8,16 +8,15 @@ namespace AutomationFramework.Handler
     {
         public static bool ElementIsPresent(IWebDriver driver, By locator)
         {
-            bool elementPresent = false;
             try
             {
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
                 wait.Until(drv => drv.FindElement(locator));
-                elementPresent = true;
+                return true;
             }
             catch { }
 
-            return elementPresent;
+            return false;
         }
     }
 }
