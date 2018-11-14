@@ -18,7 +18,7 @@ namespace AutomationFramework.PO
         {
             Driver = driver;
 
-            if (Driver.Title.Equals("AUT From"))
+            if (!Driver.Title.Equals("AUT Form – Verstand QA"))
                 throw new Exception("This is not the Employee page");
         }
         
