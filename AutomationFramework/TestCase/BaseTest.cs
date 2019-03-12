@@ -19,6 +19,7 @@ namespace AutomationFramework.TestCase
         {
             Driver = new ChromeDriver();
             Driver.Navigate().GoToUrl(Url);
+            Driver.Manage().Window.Maximize();
         }
 
         public void AfterBaseTest()
