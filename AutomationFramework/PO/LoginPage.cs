@@ -13,7 +13,7 @@ namespace AutomationFramework.PO
         {
             Driver = driver;
 
-            if (!Driver.Title.Equals("AUT Login – Verstand QA"))
+            if (!Driver.Title.Equals("AUT Login – TestFaceClub"))
                 throw new Exception("This is not the login page");
         }
 
